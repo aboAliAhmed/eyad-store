@@ -3,7 +3,7 @@ import {FaShoppingCart, FaUser, FaSearch} from 'react-icons/fa'
 
 export default function Header() {
   return (
-    <header className='shadow-md'>
+    <header className='shadow-md bg-orange-100'>
       <div className='flex justify-between items-center max-w-5xl mx-auto py-3 px-5'>
         <Link to='/'>
           <h1 className="font-bold text-sm sm:text-xl">
@@ -11,13 +11,13 @@ export default function Header() {
             <span className="text-orange-500"> إياد</span>
           </h1>
         </Link>
-        <form className="flex gap-1 sm:gap-5 items-center">
+        <form className="flex gap-1 sm:gap-5 items-center bg-white rounded px-2">
           <input 
             type="text" 
             placeholder="عما تبحث" 
             className="text-orange-700 focus:outline-none w-20 sm:min-w-36"
           />
-          <FaSearch className="text-orange-200"/>
+          <FaSearch className="text-orange-400"/>
         </form>
         <ul className="hidden sm:flex gap-4 sm:gap-5">
           <Link to='/products'>
@@ -38,10 +38,10 @@ export default function Header() {
         </ul>
         <ul className="flex gap-1 sm:gap-2">
           <Link to='/shopping-cart'>
-          <FaShoppingCart className="text-orange-200"/>
+          <FaShoppingCart className="text-orange-400"/>
           </Link>
           <Link to='/profile'>
-          <FaUser className="text-orange-200"/>
+          <FaUser className="text-orange-400"/>
           </Link>
         </ul>
       </div>
