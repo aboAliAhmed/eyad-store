@@ -32,7 +32,7 @@ export const getAllUsers = catchAsync(async (req, res, next) => {
 
 export const updateMe = catchAsync(async (req, res, next) => {
   // 1) Make sure that the request has no password data
-  if (req.body.password || req.body.passwordConfirm) {
+  if (req.body.passwords) {
     return next(
       new AppError(
         "This route is not for password updates. Please use /updatePassword.",
@@ -75,7 +75,7 @@ export const updateUser = catchAsync(async (req, res, next) => {
   if (!user) {
     return next(new AppError("No user foud with this id"));
   }
-
+  console.log(user);
   sendResponse(res, user, 200);
 });
 

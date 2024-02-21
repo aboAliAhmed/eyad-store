@@ -9,12 +9,22 @@ import {
   deleteMe,
 } from "../controllers/userController.js";
 
+import { protect, restrictTo } from "../controllers/authController.js";
+
 const router = express.Router();
 
-import dotenv from "dotenv";
+router.patch("/updateMe", protect, updateMe);
+router.patch("/deleteMe", protect, deleteMe);
 
-router.route("/").get(getAllUsers).post(createUser);
+router
+  .route("/")
+  .get(getAllUsers)
+  .post(protect, restrictTo("admin"), createUser);
 
-router.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
+router
+  .route("/:id")
+  .get(getUser)
+  .patch(protect, restrictTo("admin"), updateUser)
+  .delete(protect, restrictTo("admin"), deleteUser);
 
 export default router;
