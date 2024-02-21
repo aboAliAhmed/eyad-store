@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "حدد كلمة المرور"],
       maxlength: [20, "يجب ألا يزيد الإسم عن 20 حرفاً"],
-      minlength: [3, "يجب ألا تقل كلمة المرور عن 9 حروف"],
+      minlength: [9, "يجب ألا تقل كلمة المرور عن 9 حروف"],
       select: false,
     },
     role: {

@@ -5,6 +5,8 @@ import userRouter from "./routes/userRoute.js";
 
 const app = express();
 
+app.use(express.json());
+
 dotenv.config({ path: "./config.env" });
 const DB = process.env.DATABASE.replace(
   "<PASSWORD>",
@@ -30,4 +32,4 @@ app.get("/", (req, res) => {
   res.send("Hello There");
 });
 
-app.use("/api/v1/users", userRouter);
+app.use("/api/v1/user", userRouter);
