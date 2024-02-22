@@ -11,7 +11,6 @@ const handleDuplicateFieldsDB = (err) => {
       ? "إسم المستخدم"
       : "البريد الإلكتروني"
   } موجود بالفعل, اختر قيمة أخرى`;
-  console.log(Object.keys(err.keyValue));
   return new AppError(message, 400);
 };
 
