@@ -6,23 +6,25 @@ const handleCastErrorDB = (err) => {
 };
 
 const handleDuplicateFieldsDB = (err) => {
-  const message = `Duplicate field value: ${Object.keys(
-    err.keyValue
-  )}. Please use another value`;
+  const message = `${
+    Object.keys(err.keyValue)[0] === "username"
+      ? "إسم المستخدم"
+      : "البريد الإلكتروني"
+  } موجود بالفعل, اختر قيمة أخرى`;
+  console.log(Object.keys(err.keyValue));
   return new AppError(message, 400);
 };
 
 const handleValidationErrorDB = (err) => {
   const errors = Object.values(err.errors).map((el) => el.message);
-  const message = `invalid input data. ${errors.join(". ")}`;
+  const message = `${errors.join(". ")}`;
   return new AppError(message, 400);
 };
 
 const handleJWTError = () =>
-  new AppError(`You've got invailed token, please login!`, 401);
+  new AppError(`الشفرة الخاصة بك غير صالحة, منفضل قم بستسجيل الدخول`, 401);
 
-const handleJWTExpiredError = () =>
-  new AppError("Your token have been expired, please login!", 401);
+const handleJWTExpiredError = () => new AppError("أنت بحاجة لتسجل الدخول", 401);
 
 const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
@@ -45,7 +47,7 @@ const sendErrorProd = (err, res) => {
     res.status(500).json({
       error: err,
       status: "error",
-      message: "Something went very wrong!",
+      message: "شيئٌ ما ليس على ما يرام!",
     });
   }
 };

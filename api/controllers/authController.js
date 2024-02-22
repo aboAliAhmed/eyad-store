@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import AppError from "../utils/appError.js";
 import catchAsync from "../utils/catchAsync.js";
 import sendEmail from "../utils/email.js";
+import crypto from "crypto";
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -201,7 +202,6 @@ export const resetPassword = catchAsync(async (req, res, next) => {
   }
 
   user.password = req.body.password;
-  user.passwordConfirm = req.body.passwordConfirm;
   user.passwordResetToken = undefined;
   user.passwordResetExpires = undefined;
   await user.save();
@@ -223,7 +223,6 @@ export const updatePassword = catchAsync(async (req, res, next) => {
 
   // 3) Update password
   user.password = req.body.password;
-  user.passwordConfirm = req.body.passwordConfirm;
   await user.save();
 
   // 4) Log user in, send JWT

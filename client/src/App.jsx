@@ -8,6 +8,8 @@ import Dashboard from './pages/Dashboard';
 import Products from './pages/Products';
 import Profile from './pages/Profile';
 import ShoppingCart from './pages/ShoppingCart';
+import SignUp from './pages/Signup';
+import Login from './pages/Login';
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/shopping-cart' element={<ShoppingCart/>}/>
+        <Route path='/sign-up' element={<SignUp/>}/>
+        <Route path='/sign-in' element={<Login/>}/>
         <Route path='/products' element={<Products/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact-us' element={<ContactUs/>}/>

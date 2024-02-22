@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon api/index.js",
-    "start": "node api/index.js"
+    "start": "node api/index.js",
+    "start:prod": "NODE_ENV=production nodemon api/index.js"
   },
   "author": "",
   "license": "ISC",
