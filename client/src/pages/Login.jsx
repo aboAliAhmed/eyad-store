@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginStart, loginSuccess, loginFailure } from '../redux/user/userSlice.js';
+import OAuth from '../components/OAuth.jsx';
 
 export default function Login() {
   const [formData, setFormData] = useState({});
@@ -67,6 +68,7 @@ export default function Login() {
         >
           {loading ? 'تحميل...' : 'احصل على حساب'}
         </button>
+        <OAuth />
       </form> 
       <div className='flex gap-2 w-fit mt-5 mx-auto'>
         <Link to={'/sign-up'}>

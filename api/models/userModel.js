@@ -35,6 +35,11 @@ const userSchema = new mongoose.Schema(
       maxlength: [11, "يجب ألا يزيد رقم الهاتف عن 11 رقماً"],
       minlength: [11, "يجب ألا يقل رقم الهاتف عن 11 رقماً"],
     },
+    avatar: {
+      type: String,
+      default:
+        "https://imgs.search.brave.com/Evls_n45SXJWvHRGRQWHlz6EUt0iGjxIvPflf-mgeSQ/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAzLzQwLzEyLzQ5/LzM2MF9GXzM0MDEy/NDkzNF9iejNwUVRM/cmRGcEg5MmVra251/YVRIeThKdVhnRzdm/aS5qcGc",
+    },
     country: {
       type: String,
       enum: ["egypt"],

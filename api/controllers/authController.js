@@ -53,13 +53,14 @@ export const login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password)
-    return next(new AppError("Provide your email and password", 401));
+    return next(new AppError("أدخل اسم المستحدم وكلمة السر", 401));
 
   const user = await User.findOne({ email }).select("+password");
-  if (!user) return next(new AppError("There is no user for this email", 401));
+  if (!user)
+    return next(new AppError("هذا الحساب غير مسجل لدينا, يمكنك التسجيل", 401));
 
   if (!(await user.correctPassword(password, user.password)))
-    return next(new AppError("wrong password", 401));
+    return next(new AppError("كلمة لاسر مختلفة", 401));
 
   createSendToken(user, 200, res);
 });
@@ -76,7 +77,7 @@ export const protect = catchAsync(async (req, res, next) => {
   }
 
   if (!token) {
-    return next(new AppError("You are not loged in, please login first"));
+    return next(new AppError("من فضلك قم بتسجيل الدخول"));
   }
 
   // 2) Verify the token
@@ -112,28 +113,24 @@ export const restrictTo = function (...roles) {
 };
 
 export const google = catchAsync(async (req, res, next) => {
-  try {
-    const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ email: req.body.email });
 
-    if (user) {
-      createSendToken(user, 200, res);
-    } else {
-      const generatedPassword =
-        Math.random().toString(36).slice(-8) +
-        Math.random().toString(36).slice(-8); // It results the last 8 digits of a number like (0.5sfs6asds7r) so we got a 16 digits
-      const newUser = new User({
-        username:
-          req.body.name.split(" ").join("").toLowerCase() +
-          Math.random().toString(36).slice(-4),
-        email: req.body.email,
-        password: generatedPassword,
-        avatar: req.body.imageUrl,
-      });
-      await newUser.save();
-      createSendToken(newUser, 200, res);
-    }
-  } catch (err) {
-    next(err);
+  if (user) {
+    createSendToken(user, 200, res);
+  } else {
+    const generatedPassword =
+      Math.random().toString(36).slice(-8) +
+      Math.random().toString(36).slice(-8); // It results the last 8 digits of a number like (0.5sfs6asds7r) so we got a 16 digits
+    const newUser = new User({
+      username:
+        req.body.name.split(" ").join("").toLowerCase() +
+        Math.random().toString(36).slice(-4),
+      email: req.body.email,
+      password: generatedPassword,
+      avatar: req.body.imageUrl,
+    });
+    await newUser.save();
+    createSendToken(newUser, 200, res);
   }
 });
 
