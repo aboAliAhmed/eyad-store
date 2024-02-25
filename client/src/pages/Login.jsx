@@ -66,7 +66,7 @@ export default function Login() {
           disabled={loading}
           className='bg-orange-500 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
         >
-          {loading ? 'تحميل...' : 'احصل على حساب'}
+          {loading ? 'تحميل...' : 'تسجيل الدخول؟'}
         </button>
         <OAuth />
       </form> 

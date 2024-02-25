@@ -4,8 +4,10 @@ import catchAsync from "../utils/catchAsync.js";
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
-  Object.keys(obj).forEach((el) => {
-    if (allowedFields.includes(el)) newObj[el] = obj[el];
+  allowedFields.forEach((field) => {
+    if (allowedFields.includes(field) && obj[field]) {
+      newObj[field] = obj[field];
+    }
   });
   return newObj;
 };
@@ -41,10 +43,18 @@ export const updateMe = catchAsync(async (req, res, next) => {
     );
   }
 
-  // 2) filter out fields that are not wanted to be updated;
-  const filteredBody = filterObj(req.body, "name", "email");
-
-  // 2) Update user document
+  // 2) Filter out fields that are not wanted to be updated
+  const filteredBody = filterObj(
+    req.body,
+    "username",
+    "email",
+    "phone",
+    "country",
+    "government",
+    "city",
+    "streetAndAppartmentNo"
+  );
+  // 3) Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
     new: true,
     runValidators: true,
@@ -75,7 +85,6 @@ export const updateUser = catchAsync(async (req, res, next) => {
   if (!user) {
     return next(new AppError("No user foud with this id"));
   }
-  console.log(user);
   sendResponse(res, user, 200);
 });
 

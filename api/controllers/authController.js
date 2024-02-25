@@ -74,8 +74,9 @@ export const protect = catchAsync(async (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
+  } else if (req.headers.cookie) {
+    token = req.headers.cookie.slice(4);
   }
-
   if (!token) {
     return next(new AppError("من فضلك قم بتسجيل الدخول"));
   }
@@ -95,15 +96,16 @@ export const protect = catchAsync(async (req, res, next) => {
       new AppError("User recently changed password, please login", 401)
     );
   }
-
   req.user = existedUser; // Grant the user his data and Access to protected route
-
+  console.log(req.user);
+  console.log(req.user.role);
   next();
 });
 
 export const restrictTo = function (...roles) {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
+      console.log(roles, req.user.role, req.user);
       return next(
         new AppError("You do not have permission to perform this action", 403)
       );

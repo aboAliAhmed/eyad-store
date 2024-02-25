@@ -11,6 +11,7 @@ import ShoppingCart from './pages/ShoppingCart';
 import SignUp from './pages/Signup';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
+import AdminOnly from './components/AdminOnly';
 
 export default function App() {
   return (
@@ -28,7 +29,9 @@ export default function App() {
         <Route element={<PrivateRoute />}>
           <Route path='/profile' element={<Profile/>}/>
         </Route>
-        <Route path='/dahboard' element={<Dashboard/>}/>
+        <Route element={<AdminOnly />}>
+          <Route path='/dashboard' element={<Dashboard/>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )

@@ -1,11 +1,9 @@
 import {FaShoppingCart, FaUser, FaSearch} from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 
 export default function Header() {
-  const { currentUser } = useSelector(state => state.user);
   const [ searchTerm, setSearchTerm ] = useState(''); 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -69,17 +67,7 @@ export default function Header() {
             <FaShoppingCart className="text-orange-400 h-5 w-5"/>
           </Link>
           <Link to='/profile'>
-            {
-              currentUser ? (
-                <img 
-                  className='rounded-full h-7 w-7 object-cover'
-                  src={currentUser.data ?.user.avatar} 
-                  alt='profile' 
-                />
-              ) : (
-              <FaUser className="text-orange-400 h-7 w-7"/>
-              )
-            }
+            <FaUser className="text-orange-400 h-4 w-4"/>
           </Link>
         </ul>
       </div>
