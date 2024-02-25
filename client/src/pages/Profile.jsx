@@ -169,13 +169,13 @@ export default function Profile() {
           {loading ? '...انتظر' : 'تحديث؟'}
         </button>
       </form>
-      <div className="flex justify-between mt-5">
-        <span 
+      <div className="flex justify-between mt-5 w-fit mx-auto">
+        {currentUser.data.user.role === 'admin' ? '' :<span 
           onClick={handleDeleteUser} 
           className="text-red-700 cursor-pointer"
         >
           احذف الحساب؟
-        </span>
+        </span>}
         <span
           onClick={handleLogout} 
           className="text-red-700 cursor-pointer"
