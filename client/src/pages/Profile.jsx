@@ -13,6 +13,7 @@ import {
   logoutSuccess
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Profile() {
   const { currentUser, loading, error } = useSelector((state) => state.user);
@@ -169,20 +170,35 @@ export default function Profile() {
           {loading ? '...انتظر' : 'تحديث؟'}
         </button>
       </form>
-      <div className="flex justify-between mt-5 w-fit mx-auto">
-        {currentUser.data.user.role === 'admin' ? '' :<span 
-          onClick={handleDeleteUser} 
-          className="text-red-700 cursor-pointer"
-        >
-          احذف الحساب؟
-        </span>}
-        <span
-          onClick={handleLogout} 
-          className="text-red-700 cursor-pointer"
-        >
-          تسجيل الخروج؟
-        </span>
-      </div>
+      {currentUser.data.user.role === 'admin' 
+      ? <div className="">
+          <Link 
+            to={'/dashboard'} 
+            className="bg-amber-600 text-white block text-center m-3 p-3 cursor-pointer max-w-lg rounded-lg"
+          >
+            أنشئ منتجاً
+          </Link> 
+          <span
+            onClick={handleLogout} 
+            className="text-red-700 cursor-pointer block text-center"
+          >
+            تسجيل الخروج؟
+          </span>
+        </div>
+      : <div className="flex justify-between mt-5 flex-wrap">
+          <span 
+            onClick={handleDeleteUser} 
+            className="text-red-700 cursor-pointer"
+          > 
+            احذف الحساب؟  
+          </span>
+          <span
+            onClick={handleLogout} 
+            className="text-red-700 cursor-pointer"
+          >
+            تسجيل الخروج؟
+          </span>
+        </div>}
       <p className="text-red-700 mt-5">{error ? error.message : ''}</p>
       <p className="text-green-700 mt-5 mx-auto w-fit">
         {updateSuccess ? 'تم التحديث بنجاح' : ''}

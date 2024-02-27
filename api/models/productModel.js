@@ -8,21 +8,27 @@ const productSchema = new mongoose.Schema(
       trim: true,
       minlength: [3, "يجب ألا يقل الإسم عن 3 حروف"],
     },
+    regularPrice: {
+      type: Number,
+      required: [true, "أدخل سعر المنتج"],
+    },
+    imageURL: {
+      type: String,
+    },
     description: {
       type: String,
     },
-    regularPrice: {
-      type: Number,
-      required: true,
+    type: {
+      type: String,
     },
-    discountedPrice: {
-      type: Number,
+    customizedOffer: {
+      type: String,
     },
     offer: {
       type: Boolean,
     },
-    imgURLs: {
-      type: Array,
+    discountedPrice: {
+      type: Number,
     },
   },
   { timestamps: true }

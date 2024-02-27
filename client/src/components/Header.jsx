@@ -22,10 +22,10 @@ export default function Header() {
     }
   } , [location.search])
   return (
-    <header className='shadow-md bg-orange-100'>
+    <header className=' bg-orange-100 w-full block sticky top-0 z-10'>
       <div className='flex justify-between items-center max-w-5xl mx-auto py-3 px-5'>
         <Link to='/'>
-          <h1 className="font-bold text-sm sm:text-xl">
+          <h1 className="font-black text-sm sm:text-xl">
             <span className="text-orange-600">متجر</span>
             <span className="text-orange-500"> إياد</span>
           </h1>
