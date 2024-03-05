@@ -14,6 +14,7 @@ export default function Header() {
     navigate(`/search?${searchQuery}`);
   }
 
+  // to get the change of the search bar of the browser as well as the one of the page
   useEffect(()=> {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
@@ -21,8 +22,9 @@ export default function Header() {
       setSearchTerm(searchTermFromUrl)
     }
   } , [location.search])
+  
   return (
-    <header className=' bg-orange-100 w-full block sticky top-0 z-10'>
+    <header className=' bg-orange-100 w-[100vw] block sticky top-0 z-10'>
       <div className='flex justify-between items-center max-w-5xl mx-auto py-3 px-5'>
         <Link to='/'>
           <h1 className="font-black text-sm sm:text-xl">

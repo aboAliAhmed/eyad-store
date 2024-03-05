@@ -87,27 +87,24 @@ export const protect = catchAsync(async (req, res, next) => {
   // 3) check if user still exists
   const existedUser = await User.findById(decoded.id);
   if (!existedUser) {
-    return next(new AppError("this user is no longer existed", 401));
+    return next(new AppError("هذا الحساب لم يعد متوفر", 401));
   }
 
   // 4) check if user changed password
   if (existedUser.changedPasswordAfter(decoded.iat)) {
     return next(
-      new AppError("User recently changed password, please login", 401)
+      new AppError("تم تغير كلمة السر مؤخراً, منفضلك قم بتسجيل الدخول", 401)
     );
   }
   req.user = existedUser; // Grant the user his data and Access to protected route
-  console.log(req.user);
-  console.log(req.user.role);
   next();
 });
 
 export const restrictTo = function (...roles) {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-      console.log(roles, req.user.role, req.user);
       return next(
-        new AppError("You do not have permission to perform this action", 403)
+        new AppError("لا يمكنك تنفيذ هذه العملية في الوقت الحالي", 403)
       );
     }
     next();

@@ -27,6 +27,9 @@ const productSchema = new mongoose.Schema(
     offer: {
       type: Boolean,
     },
+    available: {
+      type: Boolean,
+    },
     discountedPrice: {
       type: Number,
     },

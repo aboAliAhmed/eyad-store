@@ -11,7 +11,38 @@ const sendResponse = (res, product, statusCode) => {
 };
 
 export const getAllProducts = catchAsync(async (req, res, next) => {
-  const products = await Product.find();
+  const limit = parseInt(req.query.limit) || 9;
+  const startIndex = parseInt(req.query.startIndex) || 0;
+  const searchTerm = req.query.searchTerm || "";
+  const sort = req.query.sort || "createdAt";
+  const order = req.query.order || "desc";
+  let offer = req.query.offer;
+  let type = req.query.type;
+  let typeFilter = {};
+
+  // if offer not specified get data whose offer === true || false
+  if (offer === undefined || offer === "false") {
+    offer = { $in: [false, true] };
+  }
+  if (type !== undefined && type !== "") {
+    console.log(req.query);
+    typeFilter = { type: type };
+  }
+
+  console.log(limit, typeFilter, searchTerm);
+  console.log("offer", offer, "type", type, "console", req.query.offer);
+  const products = await Product.find({
+    $or: [
+      { name: { $regex: searchTerm, $options: "i" } },
+      { description: { $regex: searchTerm, $options: "i" } },
+    ],
+    offer,
+    ...typeFilter,
+  })
+    .sort({ [sort]: order })
+    .limit(limit)
+    .skip(startIndex);
+
   sendResponse(res, products, 200);
 });
 

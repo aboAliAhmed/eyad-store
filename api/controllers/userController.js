@@ -80,7 +80,9 @@ export const getUser = catchAsync(async (req, res, next) => {
 });
 
 export const updateUser = catchAsync(async (req, res, next) => {
-  const user = await User.findByIdAndUpdate(req.params.id, req.body);
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
 
   if (!user) {
     return next(new AppError("No user foud with this id"));
