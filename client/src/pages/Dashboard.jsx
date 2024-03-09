@@ -14,9 +14,8 @@ export default function Listing() {
     type: '',
     description: '',
     regularPrice: 0,
-    customizedOffer: '',
     offer: false,
-    discountedPrice: 0
+    discountPrice: 0
   });
 
   const handleChange = (e) =>{
@@ -36,11 +35,8 @@ export default function Listing() {
       case 'offer':
         setFormData({...formData, offer: e.target.checked})
         break;
-      case 'customizedOffer':
-        setFormData({...formData, customizedOffer: e.target.value})
-        break;
       case 'discountPrice':
-        setFormData({...formData, discountedPrice: e.target.value})
+        setFormData({...formData, discountPrice: e.target.value})
         break;
     }
   }
@@ -66,7 +62,6 @@ export default function Listing() {
       console.error(error);
     }, ()=>{
       // get teh download url
-      console.log(uploadTask.snapshot.ref)
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=> {setFormData({...formData, imageURL:downloadURL})
     }
       ).catch((error) => {
@@ -75,7 +70,6 @@ export default function Listing() {
       });
     })
   }
-  console.log(formData)
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
@@ -90,11 +84,23 @@ export default function Listing() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(data)
       setLoading(false);
       if (data.status !== 'success'){
+        setLoading(false);
         setError(data.message)
-      }
+      } 
+
+      setFormData({
+        imageURL: '',
+        name: '',
+        type: '',
+        description: '',
+        regularPrice: 0,
+        offer: false,
+        discountPrice: 0
+      });
+      setFile(undefined);
+
     }catch (err) {
       setError(err.message);
       setLoading()
@@ -177,19 +183,8 @@ export default function Listing() {
                 />
                   <span>تخفيض</span>
               </div>
-              <div className='flex items-center my-2 gap-2'>
-                <input 
-                  type="text" 
-                  placeholder='تحديد عرض' 
-                  className='border rounded-lg pl-1 py-3  focus:outline-none' 
-                  id='customizedOffer' 
-                  onChange={handleChange}
-                  value={formData.customizedOffer}
-                />
-                <span>تحديد عرض</span>
-              </div>
             </div>
-            <div className="mx-auto grid justify-center">
+            <div className="ml-1 grid justify-center">
               {formData.imageURL ?(<img 
                 src={formData.imageURL} 
                 alt="صورة المنتج" 
@@ -205,6 +200,7 @@ export default function Listing() {
               />
               <button 
                 type='button' //so as not to submit the parent form
+                disabled={loading}
                 onClick={() => fileRef.current.click()}
                 className='bg-amber-500 text-white w-60 rounded m-auto py-2 mb-1 hover:opacity-90'
               >إضافة صورة</button>

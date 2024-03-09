@@ -2,9 +2,34 @@
 
 import { Link } from "react-router-dom";
 import {FaShoppingCart, FaPlus, FaMinus} from 'react-icons/fa'
+import { useEffect, useState } from "react";
+import { useDispatch,useSelector } from "react-redux";
+import { addToCart, decreaseQuantity } from "../redux/cart/cartSlice";
 
 
 export default function ProductItem({product}) {
+  const dispatch = useDispatch();
+  const cart = useSelector((state)=>state.cart.cart)
+// console.log(art)
+  const [orderData, setOrderData] = useState({
+    username: '',
+    phone: '',
+    government: '',
+    description: '',
+    regularPrice: 0,
+    offer: false,
+    discountPrice: 0
+  });
+
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  }
+
+  const handleDecreaseQuantity = (product) => {
+    dispatch(decreaseQuantity(product));
+  }
+
   return (
     <div className="bg-amber-100 mx-auto my-2 shadow-md hover:shadow-lg transition-shadow overflow-hidden w-[330px] rounded-lg pb-2">
       <Link to={`/product/${product._id}`}>
@@ -15,7 +40,7 @@ export default function ProductItem({product}) {
         />
         <div className="flex flex-col gap-2 ml-auto p-3">
           <div className="flex justify-between items-center w-full">
-            <p className="text-slate-500 flex w-fit mt-2 font-semibold">
+            <div className="text-slate-500 flex w-fit mt-2 font-semibold">
               {product.discountedPrice
                 ?(
                   <div className='flex justify-center items-center pb-1 py-2'>
@@ -42,30 +67,47 @@ export default function ProductItem({product}) {
                   </p>
                 )
               }
-            </p>
+            </div>
             <p className="truncate text-lg w-fit font-semibold text-slate-700">{product.name}</p>
           </div>
-            {product.customizedOffer ? (<p className="text-red-500  text-center">{product.customizedOffer}</p>) : ''}
             {/* to truncate text with two lines you don't have a class inside taiwind to truncate text in one line so you could install line clamp so you go to -@tailwindcss/line-clamp-*/}
             <p className="text-sm text-gray-600 w-fit ml-auto line-clamp-2">
             {product.description}
             </p>
         </div>
       </Link>
-      <button className="bg-orange-500 text-white flex justify-between items-center w-[96%] mx-auto py-[3%] px-6 rounded-lg">
-        <button className="bg-orange-800 rounded-full p-2">
-          <FaMinus />
-        </button>
-        <div className="flex justify-between items-center ">
+        {cart.length === 0 || 
+        !cart.find(item => item._id === product._id) || 
+        cart.find(item => item._id === product._id)?.orderedQuantity === 0
+        ? (<button 
+          onClick={() => handleAddToCart(product)}
+          className="bg-orange-500 text-white flex justify-center items-center w-[96%] mx-auto py-[3%] px-6 rounded-lg"
+        >
           <FaShoppingCart className="mr-1"/>
           <span>
             أضف إلى 
-          </span>
-        </div>
-        <button className="bg-orange-800 rounded-full p-2" >
-          <FaPlus />
-        </button>
-      </button>
+          </span>  
+        </button>) 
+        : cart.find(item => item._id === product._id)?.orderedQuantity > 0
+        ? ( <div className=" flex justify-between mx-2">
+          <button 
+            onClick={()=> handleDecreaseQuantity(product)}
+            className="bg-orange-500 text-white flex justify-center items-center w-1/3 rounded-lg p-2"
+          >
+            <FaMinus />
+          </button>
+          <span
+            className="text-orange-900"
+            >{cart.find(item => item._id === product._id).orderedQuantity}</span>
+          <button 
+            onClick={()=> handleAddToCart(product)}
+            className="bg-orange-500 text-white flex justify-center items-center w-1/3 rounded-lg p-2" 
+          >
+            <FaPlus />
+          </button>
+          </div> ) 
+          : ''
+          }
     </div>
   )
 }

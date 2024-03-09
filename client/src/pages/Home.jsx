@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import ProductItem from '../components/ProductItem'
+import { useSelector } from 'react-redux';
 
 export default function Home() {
+  const cart = useSelector((state)=>state.cart.cart)
   const [products, setProducts] = useState(null);
   const [offerProducts, setOfferProducts] = useState([]);
   const [latestProducts, setLatestProducts] = useState([]);
   const [recentOffers, setRecentOffers] = useState([]);
   const params = useParams();
-
+console.log(cart)
   useEffect(() => {
 
     const fetchLatestProducts = async () => {      
@@ -42,7 +44,7 @@ export default function Home() {
           اعثر على 
           <span className='text-orange-500'> الهدية</span> 
           <br /> 
-          اللتي تُريد
+          التي تُريد
         </h1>
         <div className='text-[#462416] text-xs sm:text-sm lg:text-base text-right'>
           خير ما يُستقبل به مواسم الطاعات: كثرة الاستغفار؛ <br />

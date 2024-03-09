@@ -18,7 +18,6 @@ export default function Product() {
   useEffect(()=>{
     const fetchProduct = async () => {
       try {
-        console.log(params.productId)
         setLoading(true);
         const res =await fetch(`/api/v1/product/${params.productId}`);
         const data = await res.json();
@@ -88,18 +87,12 @@ export default function Product() {
               {product.description}
             </p>
             <button className="bg-orange-500 text-white flex justify-between items-center w-[96%] mx-auto py-[3%] px-6 rounded-lg">
-              <button className="bg-orange-800 rounded-full p-2">
-                <FaMinus />
-              </button>
               <div className="flex justify-between items-center mx-auto ">
                 <FaShoppingCart className="mr-1"/>
                 <span>
                   أضف إلى 
                 </span>
               </div>
-              <button className="bg-orange-800 rounded-full p-2" >
-                <FaPlus />
-              </button>
           </button>
           </div>
         </div>

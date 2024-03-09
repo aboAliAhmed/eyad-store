@@ -21,16 +21,16 @@ const productSchema = new mongoose.Schema(
     type: {
       type: String,
     },
-    customizedOffer: {
-      type: String,
-    },
     offer: {
       type: Boolean,
     },
     available: {
       type: Boolean,
     },
-    discountedPrice: {
+    discountPrice: {
+      type: Number,
+    },
+    orderedQuantity: {
       type: Number,
     },
   },
