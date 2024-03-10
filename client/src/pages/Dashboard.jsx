@@ -210,12 +210,15 @@ export default function Listing() {
                 ? (<span className="text-orange-500">انتظر</span>)  
                 : filePerc === 100 
                 ? (<span className="text-green-500 w-fit m-auto">تم تحميل الصورة</span> )
-              : ('')}
+                : ('')
+              }
             </div>
           </div>
           <button 
             className="bg-orange-600 text-white w-11/12 text-xl focus:outline-none rounded p-2 m-auto"
-          >إضافة منتج</button>
+          >
+            إضافة منتج
+          </button>
         </form>
       </div>
     </main>

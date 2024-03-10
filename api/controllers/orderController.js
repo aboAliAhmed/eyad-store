@@ -26,13 +26,24 @@ export const getAllorders = catchAsync(async (req, res, next) => {
 });
 
 export const createorder = catchAsync(async (req, res, next) => {
+  const products = req.body.products;
   const orders = await Order.find({});
+  //gererate a unique order number
   req.body.orderNumber = 220 + orders.length;
-  const quantity = req.body.quantity;
-
-  const product = await Product.findById(req.body.product);
-
-  req.body.totalPrice = quantity * product.regularPrice;
+  let product;
+  let price = 0;
+  let totalPrice = 0;
+  let quantity;
+  // calculate the total price
+  for (let i = 0; i < products.length; i++) {
+    product = await Product.findById(products[i].product);
+    quantity = products[i].quantity;
+    product.offer
+      ? (price = product.discountedPrice)
+      : (price = product.regularPrice);
+    totalPrice += price * quantity;
+  }
+  req.body.totalPrice = totalPrice;
 
   const order = await Order.create(req.body);
 

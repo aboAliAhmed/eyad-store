@@ -15,6 +15,7 @@ import AdminOnly from './components/AdminOnly';
 import Search from './pages/Search';
 import Product from './pages/Product';
 import UpdateProduct from './pages/UpdateProduct';
+import Address from './pages/Address';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/offers' element={<Offers/>}/>
         <Route path='/shopping-cart' element={<ShoppingCart/>}/>
+        <Route path='/adress' element={<Address/>}/>
         <Route path='/products' element={<Products/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/contact-us' element={<ContactUs/>}/>

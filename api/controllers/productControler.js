@@ -25,12 +25,9 @@ export const getAllProducts = catchAsync(async (req, res, next) => {
     offer = { $in: [false, true] };
   }
   if (type !== undefined && type !== "") {
-    console.log(req.query);
     typeFilter = { type: type };
   }
 
-  console.log(limit, typeFilter, searchTerm);
-  console.log("offer", offer, "type", type, "console", req.query.offer);
   const products = await Product.find({
     $or: [
       { name: { $regex: searchTerm, $options: "i" } },

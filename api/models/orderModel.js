@@ -24,25 +24,38 @@ const orderSchema = new mongoose.Schema(
     },
     government: {
       type: String,
+      required: [true, "من فضلك أدخل العنوان الخاص بك"],
     },
     city: {
       type: String,
+      required: [true, "من فضلك أدخل العنوان الخاص بك"],
     },
     streetAndAppartmentNo: {
       type: String,
+      required: [true, "من فضلك أدخل العنوان الخاص بك"],
     },
-    product: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Product",
-      required: [
-        true,
-        "ثمت مشكلة أثناء التسجيل, من فضلك أعد المحاولة مرة أخرى",
-      ],
-    },
-    quantity: {
-      type: Number,
-      required: [true, "لم يتم تحديد العدد أو الكمية"],
-    },
+    products: [
+      {
+        product: {
+          type: mongoose.Schema.ObjectId,
+          ref: "Product",
+          required: [
+            true,
+            "ثمت مشكلة أثناء التسجيل, من فضلك أعد المحاولة مرة أخرى",
+          ],
+        },
+        quantity: {
+          type: Number,
+          required: [true, "لم يتم تحديد العدد أو الكمية"],
+        },
+        name: {
+          type: String,
+        },
+        totalPrice: {
+          type: Number,
+        },
+      },
+    ],
     totalPrice: {
       type: Number,
     },

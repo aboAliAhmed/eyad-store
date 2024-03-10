@@ -2,7 +2,6 @@
 
 import { Link } from "react-router-dom";
 import {FaShoppingCart, FaPlus, FaMinus} from 'react-icons/fa'
-import { useEffect, useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { addToCart, decreaseQuantity } from "../redux/cart/cartSlice";
 
@@ -10,16 +9,6 @@ import { addToCart, decreaseQuantity } from "../redux/cart/cartSlice";
 export default function ProductItem({product}) {
   const dispatch = useDispatch();
   const cart = useSelector((state)=>state.cart.cart)
-// console.log(art)
-  const [orderData, setOrderData] = useState({
-    username: '',
-    phone: '',
-    government: '',
-    description: '',
-    regularPrice: 0,
-    offer: false,
-    discountPrice: 0
-  });
 
 
   const handleAddToCart = (product) => {

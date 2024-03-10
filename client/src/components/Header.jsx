@@ -1,9 +1,11 @@
 import {FaShoppingCart, FaUser, FaSearch} from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 
 export default function Header() {
+  const cart = useSelector((state)=>state.cart.cart)
   const [ searchTerm, setSearchTerm ] = useState(''); 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -65,8 +67,11 @@ export default function Header() {
           </Link>
         </ul>
         <ul className="flex justify-center items-center gap-1 sm:gap-2">
-          <Link to='/shopping-cart'>
+          <Link to='/shopping-cart' className='flex'>
             <FaShoppingCart className="text-orange-400 h-5 w-5"/>
+            <span 
+              className='text-red-500 h-4 w-4 rounded-full text-base mt-[-8px] ml-[-2px] text-center leading-[16px]'
+            >{cart.length? cart.length : ''}</span>
           </Link>
           <Link to='/profile'>
             <FaUser className="text-orange-400 h-4 w-4"/>

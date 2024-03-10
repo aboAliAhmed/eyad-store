@@ -4,13 +4,8 @@ import ProductItem from '../components/ProductItem'
 import { useSelector } from 'react-redux';
 
 export default function Home() {
-  const cart = useSelector((state)=>state.cart.cart)
-  const [products, setProducts] = useState(null);
-  const [offerProducts, setOfferProducts] = useState([]);
   const [latestProducts, setLatestProducts] = useState([]);
   const [recentOffers, setRecentOffers] = useState([]);
-  const params = useParams();
-console.log(cart)
   useEffect(() => {
 
     const fetchLatestProducts = async () => {      

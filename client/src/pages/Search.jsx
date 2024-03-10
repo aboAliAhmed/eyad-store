@@ -45,7 +45,6 @@ export default function SearchResults() {
       setLoading(true);
       setShowMore(false);
       const searchQuery = urlParams.toString();
-      console.log(searchQuery)
       const res = await fetch(`/api/v1/product?${searchQuery}`);
       const data = await res.json();
       if (data.length > 8) {
