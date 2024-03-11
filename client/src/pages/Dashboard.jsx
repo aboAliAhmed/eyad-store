@@ -13,9 +13,9 @@ export default function Listing() {
     name: '',
     type: '',
     description: '',
-    regularPrice: 0,
+    regularPrice: '',
     offer: false,
-    discountPrice: 0
+    discountPrice: ''
   });
 
   const handleChange = (e) =>{

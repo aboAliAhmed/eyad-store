@@ -37,8 +37,6 @@ export default function Address() {
     });
     }, [cart]);
 
-    console.log(formData)
-
   const handleChange = (e) => {
     switch (e.target.id) {
       case 'username':
@@ -64,7 +62,6 @@ export default function Address() {
     try {
         setLoading(true);
         setError(false);
-        console.log('data')
         const res = await fetch('/api/v1/order', {
           method: 'POST',
           headers: {
@@ -94,19 +91,14 @@ export default function Address() {
             dispatch(clearCart());
         }
           handleClearCart();
-
-          console.log(data)
-
     } catch (error) {
         console.log(error)
     }
   }
-  console.log(orderedData)
 
   return (
     <div>
         <div>
-           { console.log(orderedData)}
             { orderedData.data?.order? ( 
                 <div className='bg-orange-200 w-[96vw] flex flex-col items-end mx-auto px-[2vw] py-[1vw] rounded-lg gap-1'>
                     <p>

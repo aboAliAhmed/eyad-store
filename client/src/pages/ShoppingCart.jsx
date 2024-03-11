@@ -10,11 +10,7 @@ export default function ShoppingCart() {
     
   ])
   const dispatch = useDispatch()
-  console.log(cart)
 
-  // setOrderData([
-    
-  // ])
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   }
@@ -78,13 +74,15 @@ export default function ShoppingCart() {
           </div>
         ))}
       </div>
-      <Link to={'/adress'}>
-        <p 
-          className="bg-orange-600 text-white w-[92vw] sm:w-[600px] md:w-[20vw] md:h-fit mx-auto md:mx-0 text-center md:mt-20 py-2 rounded-lg"
-        >
-          إستكمال الطلب
-        </p>
-      </Link>
+      {cart.length > 0 ?(
+        <Link to={'/adress'}>
+          <p 
+            className="bg-orange-600 text-white w-[92vw] sm:w-[600px] md:w-[20vw] md:h-fit mx-auto md:mx-0 text-center md:mt-20 py-2 rounded-lg"
+          >
+            إستكمال الطلب
+          </p>
+        </Link>) 
+      : ''}
     </main>
   )
 }
