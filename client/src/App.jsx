@@ -2,9 +2,9 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import About from './pages/About';
-import ContactUs from './components/ContactUs';
+import ContactUs from './pages/ContactUs';
 import Offers from './pages/Offers';
-import Dashboard from './pages/Dashboard';
+import CreateProduct from './pages/CreateProduct';
 import Products from './pages/Products';
 import Profile from './pages/Profile';
 import ShoppingCart from './pages/ShoppingCart';
@@ -13,8 +13,7 @@ import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
 import AdminOnly from './components/AdminOnly';
 import Search from './pages/Search';
-import Product from './pages/Product';
-import UpdateProduct from './pages/UpdateProduct';
+import Product from './pages/ProductPage';
 import Address from './pages/Address';
 
 export default function App() {
@@ -37,8 +36,7 @@ export default function App() {
           <Route path='/profile' element={<Profile/>}/>
         </Route>
         <Route element={<AdminOnly />}>
-          <Route path='/dashboard' element={<Dashboard/>} />
-          <Route path='/update-product' element={<UpdateProduct/>} />
+          <Route path='/create-product' element={<CreateProduct/>} />
         </Route>
       </Routes>
     </BrowserRouter>

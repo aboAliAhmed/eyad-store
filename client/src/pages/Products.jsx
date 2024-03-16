@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ProductItem from '../components/ProductItem'
 import { FaExclamation } from 'react-icons/fa';
 
@@ -114,7 +114,7 @@ export default function Home() {
       </div>
       <div className='mx-auto p-3 flex flex-col gap-8 my-5 text-right'>
         <div className='my-3'>     
-          <div className='flex flex-wrap justify-between items-center gap-2'>
+          <div className='flex flex-wrap justify-between items-center w-fit mx-auto gap-2'>
             { data && data.length > 0 
             ? data.map((product) => (<ProductItem key={product._id} product={product}/>)) 
             : (

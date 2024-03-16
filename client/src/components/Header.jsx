@@ -51,7 +51,7 @@ export default function Header() {
         </form>
         <ul className="hidden sm:flex gap-4 sm:gap-5">
           <Link to='/products'>
-            <li className="inline text-orange-400 hover:underline"> 
+            <li className="inline text-orange-400 hover:underline selection:bg-orange-500"> 
               المنتجات
             </li>
           </Link>
@@ -61,7 +61,7 @@ export default function Header() {
             </li>
           </Link>
           <Link to='/contact-us'>
-            <li className="inline text-orange-400 hover:underline"> 
+            <li className="inline text-orange-400 hover:underline "> 
               تواصل معنا
             </li>
           </Link>

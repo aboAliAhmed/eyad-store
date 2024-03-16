@@ -173,7 +173,7 @@ export default function Profile() {
       {currentUser.data.user.role === 'admin' 
       ? <div className="">
           <Link 
-            to={'/dashboard'} 
+            to={'/create-product'} 
             className="bg-amber-600 text-white block text-center m-3 p-3 cursor-pointer max-w-lg rounded-lg"
           >
             أنشئ منتجاً

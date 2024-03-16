@@ -1,16 +1,14 @@
 /* eslint-disable react/prop-types */
 
 import { Link } from "react-router-dom";
-import {FaShoppingCart, FaPlus, FaMinus} from 'react-icons/fa'
+import {FaShoppingCart, FaPlus, FaMinus } from 'react-icons/fa'
 import { useDispatch,useSelector } from "react-redux";
 import { addToCart, decreaseQuantity } from "../redux/cart/cartSlice";
-
 
 export default function ProductItem({product}) {
   const dispatch = useDispatch();
   const cart = useSelector((state)=>state.cart.cart)
-
-
+  
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   }
@@ -20,12 +18,12 @@ export default function ProductItem({product}) {
   }
 
   return (
-    <div className="bg-amber-100 mx-auto my-2 shadow-md hover:shadow-lg transition-shadow overflow-hidden w-[330px] rounded-lg pb-2">
+    <div className="bg-amber-100 w-fit sm:w-[320px] mx-auto my-2 shadow-md hover:shadow-lg transition-shadow overflow-hidden pb-2">
       <Link to={`/product/${product._id}`}>
         <img 
           src={product.imageURL} 
           alt="صورة "
-          className="h-[320px] w-[320px] p-1 object-cover hover:scal105 transition-scale duration-300 mx-auto"
+          className="w-[86vw] h-[86vw] sm:h-[320px] sm:w-[320px] p-1 object-cover hover:scal105 transition-scale duration-300 mx-auto"
         />
         <div className="flex flex-col gap-2 ml-auto p-3">
           <div className="flex justify-between items-center w-full">
@@ -36,13 +34,13 @@ export default function ProductItem({product}) {
                     <p className='text-red-500 flex flex-row mr-2'>
                       <span className="mr-1">جنيه</span>
                       <span>
-                        {(product.regularPrice - product.discountedPrice).toLocaleString('en-US')} 
+                        {product.discountedPrice.toLocaleString('en-US')} 
                       </span>
                     </p>
                     <p className='text-gray-600 flex flex-row line-through text-xs'>
                       <span className="mr-1">جنيه</span>
                       <span>
-                        {product.regularPrice.toLocaleString('en-US')}
+                        {product.regularPrice?.toLocaleString('en-US')}
                       </span>
                     </p>
                   </div>
@@ -51,7 +49,7 @@ export default function ProductItem({product}) {
                   <p className='text-green-500 flex flex-row text-right'>
                     <span className="mr-1">جنيه</span>
                     <span>
-                      {product.regularPrice.toLocaleString('en-US')}
+                      {product.regularPrice?.toLocaleString('en-US')}
                     </span>
                   </p>
                 )

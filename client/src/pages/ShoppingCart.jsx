@@ -1,26 +1,15 @@
 import { useDispatch, useSelector } from "react-redux"
-import { addToCart, decreaseQuantity } from "../redux/cart/cartSlice"
+import { decreaseQuantity } from "../redux/cart/cartSlice"
 import { Link } from "react-router-dom"
 import { FaMinus, FaPlus, FaTimes } from "react-icons/fa"
-import { useState } from "react"
 
 export default function ShoppingCart() {
   const cart = useSelector((state)=>state.cart.cart)
-  const [orderData , setOrderData] = useState([
-    
-  ])
   const dispatch = useDispatch()
 
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  }
 
   const handleDecreaseQuantity = (product) => {
     dispatch(decreaseQuantity(product));
-  }
-
-  const createOrder = () => {
-    
   }
 
   return (
