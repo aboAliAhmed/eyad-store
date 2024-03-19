@@ -10,12 +10,15 @@ import orderRouter from "./routes/orderRoute.js";
 import globalErrorHandler from "./controllers/errorController.js";
 
 const __dirname = path.resolve();
+dotenv.config({ path: "./config.env" });
 
 const app = express();
 
 app.use(express.json());
 
-dotenv.config({ path: "./config.env" });
+// Serve static files
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
 const DB = process.env.DATABASE.replace(
   "<PASSWORD>",
   process.env.DATABASE_PASSWORD
@@ -28,24 +31,15 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
-app.get("/", (req, res) => {
-  res.send("hello");
-});
-
 // Routes
 app.get("/", (req, res) => {
-  res.send("Hello There");
+  res.send("أهلاً");
 });
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/order", orderRouter);
-
-app.use(express.static(path.join(__dirname, "/client/dist")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
@@ -61,4 +55,10 @@ app.use((err, req, res, next) => {
     statusCode,
     message,
   });
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("Server is running on port 3000");
 });
