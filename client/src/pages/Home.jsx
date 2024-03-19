@@ -36,18 +36,16 @@ export default function Home() {
       {/* top */}
       <div className='bg-orange-200 flex flex-col p-[2%] sm:p-[5%] lg:pr-80 gap-6'>
         <h1 className='text-orange-700 font-bold text-3xl lg:text-6xl text-right'>
-          اعثر على 
-          <span className='text-orange-500'> الهدية</span> 
-          <br /> 
-          التي تُريد
+          <span>متجر لبيع </span>
+          <span className='text-orange-500 mx-1'>الهديا</span> 
         </h1>
         <div className='text-[#462416] text-xs sm:text-sm lg:text-base text-right'>
-          خير ما يُستقبل به مواسم الطاعات: كثرة الاستغفار؛ <br />
-          لأن ذنوب العبد تحرمه التوفيق، وما ألزمَ عبد قلبه الاستغفار إلا زكا، <br />
-          وإن كان ضعيفًا قوي، وإن كان مريضًا شُفي، وإن كان مبتلى عوفي، <br />
-          وإن كان محتارًا هُدي، وإن كان مضطربًا سكن
+        هنا تجد كل ما يُسعدك
+          <br />
+          متخصصون في بيع ما يُدخل السرور والبهجة على القلب
         </div>
         <Link 
+          to={'/products'}
           className='text-xs text-[#a55b3b] font-bold hover:underline text-right'
         >
           هَيا بنا؟

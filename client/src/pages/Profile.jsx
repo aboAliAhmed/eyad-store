@@ -171,13 +171,21 @@ export default function Profile() {
         </button>
       </form>
       {currentUser.data.user.role === 'admin' 
-      ? <div className="">
-          <Link 
-            to={'/create-product'} 
-            className="bg-amber-600 text-white block text-center m-3 p-3 cursor-pointer max-w-lg rounded-lg"
-          >
-            أنشئ منتجاً
-          </Link> 
+      ? <div className="flex flex-col">
+          <div className="flex justify-around my-3">
+            <Link 
+              to={'/create-product'} 
+              className="bg-amber-600 text-white text-center p-3 cursor-pointer rounded-lg"
+            >
+              أنشئ منتجاً
+            </Link> 
+            <Link 
+              to={'/show-orders'}
+              className="bg-amber-600 text-white text-center p-3 cursor-pointer rounded-lg"
+            >
+              عرض الطلبات  
+            </Link>
+          </div>
           <span
             onClick={handleLogout} 
             className="text-red-700 cursor-pointer block text-center"

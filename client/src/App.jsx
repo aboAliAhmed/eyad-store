@@ -15,6 +15,7 @@ import AdminOnly from './components/AdminOnly';
 import Search from './pages/Search';
 import Product from './pages/ProductPage';
 import Address from './pages/Address';
+import ShowOrder from './pages/ShowOrder';
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
         </Route>
         <Route element={<AdminOnly />}>
           <Route path='/create-product' element={<CreateProduct/>} />
+          <Route path='/show-orders' element={<ShowOrder/>} />
         </Route>
       </Routes>
     </BrowserRouter>

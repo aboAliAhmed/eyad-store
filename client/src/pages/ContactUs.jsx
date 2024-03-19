@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaCopy, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaCopy, FaInstagram, FaShoppingCart, FaWhatsapp } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 
 export default function ContactUs() {

@@ -15,7 +15,7 @@ export default function Listing() {
     description: '',
     regularPrice: '',
     offer: false,
-    discountPrice: ''
+    discountedPrice: ''
   });
 
   const handleChange = (e) =>{
@@ -35,8 +35,8 @@ export default function Listing() {
       case 'offer':
         setFormData({...formData, offer: e.target.checked})
         break;
-      case 'discountPrice':
-        setFormData({...formData, discountPrice: e.target.value})
+      case 'discountedPrice':
+        setFormData({...formData, discountedPrice: e.target.value})
         break;
     }
   }
@@ -97,7 +97,7 @@ export default function Listing() {
         description: '',
         regularPrice: '',
         offer: false,
-        discountPrice: ''
+        discountedPrice: ''
       });
       setFile(undefined);
 
@@ -177,9 +177,9 @@ export default function Listing() {
                   type="number" 
                   placeholder='تخفيض' 
                   className='border rounded-lg pl-1 py-3  focus:outline-none'  
-                  id='discountPrice' 
+                  id='discountedPrice' 
                   onChange={handleChange}
-                  value={formData.discountPrice}
+                  value={formData.discountedPrice}
                 />
                   <span>تخفيض</span>
               </div>

@@ -20,7 +20,11 @@ export const getAllorders = catchAsync(async (req, res, next) => {
   const orders = await Order.find()
     .sort({ [sort]: order })
     .limit(limit)
-    .skip(startIndex);
+    .skip(startIndex)
+    .populate({
+      path: "products.product",
+      select: "name regularPrice discountedPrice",
+    });
 
   sendResponse(res, orders, 200);
 });

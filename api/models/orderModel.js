@@ -18,9 +18,17 @@ const orderSchema = new mongoose.Schema(
       minlength: [3, "يجب ألا يقل الإسم عن 3 حروف"],
     },
     phone: {
-      type: Number,
+      type: String,
+      validate: {
+        validator: function (v) {
+          // Check if the value contains only digits
+          return /^\d+$/.test(v);
+        },
+        message: (props) => `${props.value} is not a valid phone number!`,
+      },
       maxlength: [11, "يجب ألا يزيد رقم الهاتف عن 11 رقماً"],
       minlength: [11, "يجب ألا يقل رقم الهاتف عن 11 رقماً"],
+      required: [true, "يرجى إدخال رقم الهاتف"],
     },
     government: {
       type: String,
@@ -58,10 +66,6 @@ const orderSchema = new mongoose.Schema(
     ],
     totalPrice: {
       type: Number,
-    },
-    status: {
-      type: String,
-      enum: ["pending", "processing", "shipped", "delivered", "cancelled"],
     },
   },
   { timestamps: true }
