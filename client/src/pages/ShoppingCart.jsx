@@ -16,7 +16,7 @@ export default function ShoppingCart() {
     <main className=' flex flex-col md:flex-row justify-around py-[4%]'>
       <div>
         {cart.length === 0 
-        ? <h1 className="text-red-500 font-bold text-xl">سلة المشتريات لا زالت فارغة</h1> 
+        ? <h1 className="text-red-500 font-bold text-xl text-center">سلة المشتريات لا زالت فارغة</h1> 
         : ''}
         {cart.map(el => (
           <div 

@@ -1,4 +1,4 @@
-import {FaShoppingCart, FaUser, FaSearch} from 'react-icons/fa'
+import {FaShoppingCart, FaUser, FaSearch, FaTimes} from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -44,16 +44,16 @@ export default function Header() {
           onSubmit={handleSubmit} 
           className="flex gap-1 sm:gap-5 items-center bg-white rounded px-2"
         >
+          <button>
+            <FaSearch className="text-orange-400"/>
+          </button>
           <input 
             type="text" 
             placeholder="عما تبحث؟" 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="text-orange-700 focus:outline-none w-20 sm:min-w-36"
+            className="text-orange-700 focus:outline-none w-20 sm:min-w-36 text-right"
           />
-          <button>
-            <FaSearch className="text-orange-400"/>
-          </button>
         </form>
         <ul className="hidden sm:flex gap-4 sm:gap-5">
           <Link to='/products'>
@@ -83,9 +83,15 @@ export default function Header() {
             <FaUser className="text-orange-400 h-4 w-4"/>
           </Link>
           <div className='flex flex-col items-end sm:hidden w-full'>
-            <button className='' onClick={() => toggleMenu()}>
-              <FaBars className="text-orange-400 h-4 w-4 ml-auto"/>
-            </button>
+            {
+              isOpen
+                ? <button className='' onClick={() => toggleMenu()}>
+                  <FaTimes className="text-orange-400 h-4 w-4 ml-auto"/>
+                </button> 
+                : <button className='' onClick={() => toggleMenu()}>
+                  <FaBars className="text-orange-400 h-4 w-4 ml-auto"/>
+                </button>
+            }
             {isOpen
               ? <div className='flex flex-col relative'>
               <span className='absolute top-[-9px] right-[5px] w-0 h-1 border-8 border-transparent border-b-orange-300'></span>

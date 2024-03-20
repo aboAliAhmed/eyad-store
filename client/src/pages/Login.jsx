@@ -42,11 +42,11 @@ export default function Login() {
 
   return (
     <div
-      className='p-3 max-w-lg mx-auto w-fit'
+      className='flex flex-col items-center  justify-center max-w-lg mx-auto p-3'
     >
-      <h1 className='text-orange-500 text-3xl text-center font-semibold my-7'>تسجيل الدخول</h1>
+      <h1 className='text-orange-500 w-fit text-3xl font-semibold  mx-auto my-7'>تسجيل الدخول</h1>
       <form 
-        className='flex flex-col gap-4 w-80 m-auto'
+        className='flex flex-col gap-4 w-full m-auto'
         onSubmit={handleSubmit}
       >
         <input 
@@ -66,7 +66,7 @@ export default function Login() {
           disabled={loading}
           className='bg-orange-500 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
         >
-          {loading ? 'تحميل...' : 'تسجيل الدخول؟'}
+          {loading ? '...انتظر' : 'تسجيل الدخول؟'}
         </button>
         <OAuth />
       </form> 
