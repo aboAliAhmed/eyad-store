@@ -46,7 +46,7 @@ export default function Home() {
         </div>
         <Link 
           to={'/products'}
-          className='text-xs text-[#a55b3b] font-bold hover:underline text-right'
+          className='text-[#a55b3b] w-fit ml-auto font-bold hover:underline text-right text-xs '
         >
           هَيا بنا؟
         </Link>
