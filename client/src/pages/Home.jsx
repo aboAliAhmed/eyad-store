@@ -37,7 +37,7 @@ export default function Home() {
       <div className='bg-orange-200 flex flex-col p-[2%] sm:p-[5%] lg:pr-80 gap-6'>
         <h1 className='text-orange-700 font-bold text-3xl lg:text-6xl text-right'>
           <span>متجر لبيع </span>
-          <span className='text-orange-500 mx-1'>الهديا</span> 
+          <span className='text-orange-500 mx-1'>الهدايا</span> 
         </h1>
         <div className='text-[#462416] text-xs sm:text-sm lg:text-base text-right'>
         هنا تجد كل ما يُسعدك
