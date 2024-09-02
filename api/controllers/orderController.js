@@ -34,6 +34,7 @@ export const createorder = catchAsync(async (req, res, next) => {
   const orders = await Order.find({});
   //gererate a unique order number
   req.body.orderNumber = 220 + orders.length;
+  
   let product;
   let price = 0;
   let totalPrice = 0;

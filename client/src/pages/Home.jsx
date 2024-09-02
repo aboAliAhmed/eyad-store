@@ -34,27 +34,27 @@ export default function Home() {
   return (
     <main>
       {/* top */}
-      <div className='bg-orange-200 flex flex-col p-[2%] sm:p-[5%] lg:pr-80 gap-6'>
-        <h1 className='text-orange-700 font-bold text-3xl lg:text-6xl text-right'>
-          <span>متجر لبيع </span>
-          <span className='text-orange-500 mx-1'>الهدايا</span> 
+      <div className='bg-gradient-to-b from-[#ffd0bc] via-[#ffd0bc] to-[#fff0e7] flex flex-col py-28 pr-5 sm:pr-20 lg:pr-40 gap-6'>
+        <h1 className='ibm-plex-sans-arabic tracking-wide font-bold text-3xl sm:text-4xl lg:text-6xl text-right'>
+          <span className='text-orange-700'>متجر لبيع </span>
+          <span className='text-orange-600 mx-1'>الهدايا</span> 
         </h1>
-        <div className='text-[#462416] text-xs sm:text-sm lg:text-base text-right'>
-        هنا تجد كل ما يُسعدك
-          <br />
-          متخصصون في بيع ما يُدخل السرور والبهجة على القلب
+        <div className='text-[#381101] text-sm lg:text-base text-right'>
+        هنا تجد ما يُسعدك
+        <br />
+        حيث الهدايا القيِّمة من الساعات والعطور والكماليات
         </div>
         <Link 
           to={'/products'}
-          className='text-[#a55b3b] w-fit ml-auto font-bold hover:underline text-right text-xs '
+          className='text-[#8a3e1d] w-fit ml-auto font-bold hover:underline text-right text-sm'
         >
           هَيا بنا؟
         </Link>
       </div>
-      <div className='mx-auto p-3 flex flex-col gap-8 my-10 text-right'>
+      <div className='flex flex-col gap-8 my-10 text-right sm:mx-2 md:mx-10 py-3'>
         <div className='my-3'>     
           <h2 className='text-2 font-semibold text-orange-600'>أحدث العروض</h2>
-          <div className='flex flex-wrap justify-between items-center gap-2'>
+          <div className='flex flex-wrap justify-center sm:justify-between items-center gap-2'>
             {recentOffers && recentOffers.length > 0 && recentOffers.map((product) =>(<ProductItem key={product._id} product={product}/>))}
           </div>
           <Link 
@@ -66,7 +66,7 @@ export default function Home() {
         </div>
         <div className='my-3'>     
           <h2 className='text-2 font-semibold text-orange-600'>أحدث المنتجات</h2>
-          <div className='flex flex-wrap justify-between items-center gap-2'>
+          <div className='flex flex-wrap justify-center sm:justify-between items-center gap-2'>
             {latestProducts && latestProducts.length > 0 && latestProducts.map((product) =>(<ProductItem key={product._id} product={product}/>))}
           </div>
           <Link 

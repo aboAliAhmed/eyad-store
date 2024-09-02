@@ -5,3 +5,23 @@
 body {
     background-color: #fff0e7;
 }
+
+
+.arapey-regular {
+    font-family: "Reem Kufi", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.ibm-plex-sans-arabic {
+    font-family: "IBM Plex Sans Arabic", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+@layer utilities {
+    .paused {
+        animation-play-state: paused;
+    }
+}

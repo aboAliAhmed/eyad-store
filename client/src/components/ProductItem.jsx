@@ -18,12 +18,12 @@ export default function ProductItem({product}) {
   }
 
   return (
-    <div className="bg-amber-100 w-fit sm:w-[320px] mx-auto my-2 shadow-md hover:shadow-lg transition-shadow overflow-hidden pb-2">
+    <div className="bg-indigo-100/60 w-fit sm:w-[320px] mx-auto my-2 shadow-md hover:shadow-lg transition-shadow overflow-hidden pb-2 rounded-md">
       <Link to={`/product/${product._id}`}>
         <img 
           src={product.imageURL} 
           alt="صورة "
-          className="w-[86vw] h-[86vw] sm:h-[320px] sm:w-[320px] p-1 object-cover hover:scal105 transition-scale duration-300 mx-auto"
+          className="w-[86vw] h-[86vw] sm:h-[320px] sm:w-[320px] py-2 px-[10vw] sm:px-4 object-cover hover:scal105 transition-scale duration-300 mx-auto"
         />
         <div className="flex flex-col gap-2 ml-auto p-3">
           <div className="flex justify-between items-center w-full">
@@ -55,9 +55,8 @@ export default function ProductItem({product}) {
                 )
               }
             </div>
-            <p className="truncate text-lg w-fit font-semibold text-slate-700">{product.name}</p>
+            <p className="truncate text-left text-lg w-fit font-semibold text-slate-700">{product.name}</p>
           </div>
-            {/* to truncate text with two lines you don't have a class inside taiwind to truncate text in one line so you could install line clamp so you go to -@tailwindcss/line-clamp-*/}
             <p className="text-sm text-gray-600 w-fit ml-auto line-clamp-2">
             {product.description}
             </p>

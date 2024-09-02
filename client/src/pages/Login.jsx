@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginStart, loginSuccess, loginFailure } from '../redux/user/userSlice.js';
+import { loginStart, loginSuccess, loginFailure,  } from '../redux/user/userSlice.js';
 import OAuth from '../components/OAuth.jsx';
 
 export default function Login() {
   const [formData, setFormData] = useState({});
-  const { loading, error } = useSelector((state)=>state.user)
+  const { loading, error } = useSelector((state)=>state.user);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -29,10 +30,14 @@ export default function Login() {
         body: JSON.stringify(formData)
       });
       const data = await res.json();
+
       if (data.status !== 'success') {
         dispatch(loginFailure(data.message))
+
+
         return;
-      }
+      } 
+
       dispatch(loginSuccess(data));
       navigate('/')
     } catch (err) {
