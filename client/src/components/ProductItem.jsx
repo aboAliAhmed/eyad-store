@@ -67,7 +67,7 @@ export default function ProductItem({product}) {
         cart.find(item => item._id === product._id)?.orderedQuantity === 0
         ? (<button 
           onClick={() => handleAddToCart(product)}
-          className="bg-orange-500 text-white flex justify-center items-center w-[96%] mx-auto py-[3%] px-6 rounded-lg"
+          className="bg-[#8e61a0] text-white flex justify-center items-center w-[96%] mx-auto py-[3%] px-6 rounded-lg"
         >
           <FaShoppingCart className="mr-1"/>
           <span>
@@ -78,7 +78,7 @@ export default function ProductItem({product}) {
         ? ( <div className=" flex justify-between mx-2">
           <button 
             onClick={()=> handleDecreaseQuantity(product)}
-            className="bg-orange-500 text-white flex justify-center items-center w-1/3 rounded-lg p-2"
+            className="bg-[#8e61a0] text-white flex justify-center items-center w-1/3 rounded-lg p-2"
           >
             <FaMinus />
           </button>
@@ -87,7 +87,7 @@ export default function ProductItem({product}) {
             >{cart.find(item => item._id === product._id).orderedQuantity}</span>
           <button 
             onClick={()=> handleAddToCart(product)}
-            className="bg-orange-500 text-white flex justify-center items-center w-1/3 rounded-lg p-2" 
+            className="bg-[#8e61a0] text-white flex justify-center items-center w-1/3 rounded-lg p-2" 
           >
             <FaPlus />
           </button>

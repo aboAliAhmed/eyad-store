@@ -32,10 +32,10 @@ export default function Home() {
     fetchRecentOffers();
   }, [])
   return (
-    <main>
+    <main className=''>
       {/* top */}
-      <div className='bg-gradient-to-b from-[#ffd0bc] via-[#ffd0bc] to-[#fff0e7] flex flex-col py-28 pr-5 sm:pr-20 lg:pr-40 gap-6'>
-        <h1 className='ibm-plex-sans-arabic tracking-wide font-bold text-3xl sm:text-4xl lg:text-6xl text-right'>
+      <div className='bg-gradient-to-b from-[#ffd0bc] via-[#ffd0bc] to-[#fff0e7] flex flex-col py-28 pr-5 sm:pr-20 lg:pr-40 gap-6 h-[60vh]'>
+        <h1 className='ibm-plex-sans-arabic tracking-wide font-bold text-3xl sm:text-4xl lg:text-6xl text-right mt-16'>
           <span className='text-orange-700'>متجر لبيع </span>
           <span className='text-orange-600 mx-1'>الهدايا</span> 
         </h1>
@@ -52,7 +52,7 @@ export default function Home() {
         </Link>
       </div>
       <div className='flex flex-col gap-8 my-10 text-right sm:mx-2 md:mx-10 py-3'>
-        <div className='my-3'>     
+        <div className='my-3 lg:mx-20'>     
           <h2 className='text-2 font-semibold text-orange-600'>أحدث العروض</h2>
           <div className='flex flex-wrap justify-center sm:justify-between items-center gap-2'>
             {recentOffers && recentOffers.length > 0 && recentOffers.map((product) =>(<ProductItem key={product._id} product={product}/>))}
@@ -64,7 +64,7 @@ export default function Home() {
             المزيد من العروض
           </Link>
         </div>
-        <div className='my-3'>     
+        <div className='my-3 lg:mx-20'>     
           <h2 className='text-2 font-semibold text-orange-600'>أحدث المنتجات</h2>
           <div className='flex flex-wrap justify-center sm:justify-between items-center gap-2'>
             {latestProducts && latestProducts.length > 0 && latestProducts.map((product) =>(<ProductItem key={product._id} product={product}/>))}

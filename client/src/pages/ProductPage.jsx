@@ -220,7 +220,7 @@ export default function Product() {
           cart.find(item => item._id === product._id)?.orderedQuantity === 0
           ? (<button 
             onClick={() => handleAddToCart(product)}
-            className="bg-orange-500 text-white flex justify-center items-center w-[96%] mx-auto py-[3%] px-6 rounded-lg"
+            className="bg-[#8e61a0] text-white flex justify-center items-center w-[96%] mx-auto py-[3%] px-6 rounded-lg"
           >
             <FaShoppingCart className="mr-1"/>
             <span>
@@ -231,7 +231,7 @@ export default function Product() {
           ? ( <div className=" flex justify-between mx-2">
             <button 
               onClick={()=> handleDecreaseQuantity(product)}
-              className="bg-orange-500 text-white flex justify-center items-center w-1/3 rounded-lg p-2"
+              className="bg-[#8e61a0] text-white flex justify-center items-center w-1/3 rounded-lg p-2"
             >
               <FaMinus />
             </button>
@@ -240,7 +240,7 @@ export default function Product() {
               >{cart.find(item => item._id === product._id).orderedQuantity}</span>
             <button 
               onClick={()=> handleAddToCart(product)}
-              className="bg-orange-500 text-white flex justify-center items-center w-1/3 rounded-lg p-2" 
+              className="bg-[#8e61a0] text-white flex justify-center items-center w-1/3 rounded-lg p-2" 
             >
               <FaPlus />
             </button>
@@ -249,15 +249,15 @@ export default function Product() {
             }
           </div>
         </div>
-      )}
+      )} 
       {currentUser?.data?.user.role === 'admin' 
       ? <form 
-        className="bg-orange-200 flex flex-col items-center my-10 p-2" 
+        className="bg-purple-100 flex flex-col items-center my-10 p-2" 
         onSubmit={handleSubmit}
       >
-        <h2 className='w-fit text-orange-600 mx-auto mb-8'>تعديل المنتج</h2>
+        <h2 className='w-fit text-red-600 text-3xl mx-auto mb-8 p-2 rounded-lg'>تعديل المنتج</h2>
         <div className="sm:flex sm:justify-evenly items-center max-w-2xl">
-          <div>
+          <div className='my-4'>
             <div className='flex items-center my-2 gap-2'>
               <input 
                 type="text" 
@@ -343,7 +343,7 @@ export default function Product() {
               type='button' //so as not to submit the parent form
               disabled={loading}
               onClick={() => fileRef.current.click()}
-              className='bg-amber-500 text-white w-60 rounded m-auto py-2 mb-1 hover:opacity-90'
+              className='bg-fuchsia-800 text-white w-60 rounded m-auto py-2 mb-1 hover:opacity-90'
             >إضافة صورة</button>
             {imageUploadError 
               ? (<span className="text-red-500">حدثت مشكلة أثناء تحميل الصورة</span>) 
@@ -356,7 +356,7 @@ export default function Product() {
           </div>
         </div>
         <button 
-          className="bg-orange-600 text-white w-11/12 text-xl focus:outline-none rounded p-2 m-auto"
+          className="bg-purple-800 text-white w-11/12 text-xl focus:outline-none rounded p-2 m-auto"
         >
           تعديل المنتج
         </button>
