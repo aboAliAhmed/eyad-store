@@ -32,7 +32,7 @@ export default function Header() {
   };
   
   return (
-    <header className='w-full'>
+    <header className='w-full fixed z-20'>
       <div className='flex items-center bg-orange-100 w-full h-16 sticky top-0 z-10 drop-shadow-md hover:drop-shadow-xl select-none'>
         <div className='flex justify-between items-center w-full mx-auto px-[5vw]'>
           <ul className="flex items-start gap-0 sm:gap-2">

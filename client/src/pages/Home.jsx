@@ -32,7 +32,7 @@ export default function Home() {
     fetchRecentOffers();
   }, [])
   return (
-    <main className=''>
+    <main className='pt-10'>
       {/* top */}
       <div className='bg-gradient-to-b from-[#ffd0bc] via-[#ffd0bc] to-[#fff0e7] flex flex-col py-28 pr-5 sm:pr-20 lg:pr-40 gap-6 h-[60vh]'>
         <h1 className='ibm-plex-sans-arabic tracking-wide font-bold text-3xl sm:text-4xl lg:text-6xl text-right mt-16'>

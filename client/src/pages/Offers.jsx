@@ -19,7 +19,7 @@ export default function Offers() {
   },[])
   return (
     <div>
-      <div className='flex flex-wrap justify-between items-center gap-2'>
+      <div className='flex flex-wrap pt-20 justify-between items-center gap-2'>
             {recentOffers && recentOffers.length > 0 && recentOffers.map((product) =>(<ProductItem key={product._id} product={product}/>))}
           </div>
     </div>

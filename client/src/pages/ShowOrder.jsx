@@ -31,7 +31,7 @@ export default function ShowOrder() {
 
   },[])
   return (
-    <div className='flex flex-col sm:flex-row sm:flex-wrap sm:justify-evenly gap-10 mx-5 sm:mx-10 mt-5'>
+    <div className='flex flex-col sm:flex-row sm:flex-wrap sm:justify-evenly gap-10 mx-5 sm:mx-10 pt-20'>
       {orders?.map((order, i) => 
         <div 
           key={order._id}

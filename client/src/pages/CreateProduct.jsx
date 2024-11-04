@@ -108,8 +108,8 @@ export default function Listing() {
   }
   
   return (
-    <main className="">
-      <div className="grid bg-yellow-100 rounded-md w-fit my-3 m-auto">
+    <main className="pt-20">
+      <div className="grid bg-fuchsia-200/80 rounded-md w-fit my-3 m-auto">
         <h2 className="w-fit h-fit mt-3 m-auto py-2 rounded-lg">إضافة منتج</h2>
         <form className="m-auto p-2" onSubmit={handleSubmit}>
           <div className="sm:flex sm:justify-evenly items-center max-w-2xl">
@@ -202,7 +202,7 @@ export default function Listing() {
                 type='button' //so as not to submit the parent form
                 disabled={loading}
                 onClick={() => fileRef.current.click()}
-                className='bg-amber-500 text-white w-60 rounded m-auto py-2 mb-1 hover:opacity-90'
+                className='bg-purple-600 text-white w-60 rounded m-auto py-2 mb-1 hover:opacity-90'
               >إضافة صورة</button>
               {imageUploadError 
                 ? (<span className="text-red-500">حدثت مشكلة أثناء تحميل الصورة</span>) 
@@ -215,7 +215,7 @@ export default function Listing() {
             </div>
           </div>
           <button 
-            className="bg-orange-600 text-white w-11/12 text-xl focus:outline-none rounded p-2 m-auto"
+            className="bg-fuchsia-600 text-white w-11/12 text-xl focus:outline-none rounded p-2 m-auto"
           >
             إضافة منتج
           </button>

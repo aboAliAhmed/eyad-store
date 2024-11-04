@@ -37,9 +37,9 @@ export default function Home() {
 
   return (
     <main>
-      <div className='w-11/12 mx-auto mt-5 sm:px-5'>
+      <div className='w-11/12 mx-auto sm:px-5'>
         <div className=''>
-          <div className='flex space-x-2 group text-nowrap pt-5 pb-5'>
+          <div className='flex space-x-2 group text-nowrap pt-20 pb-5'>
             <div className='animate-loop-scroll flex space-x-2 sm:space-x-6 lg:space-x-16 lg:mr-8 group-hover:paused'>
               {[
                 'ساعات', 'محافظ', 'مجات', 'إكسسوارات حريمي', 'أنتيكات',

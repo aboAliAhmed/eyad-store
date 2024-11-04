@@ -6,7 +6,7 @@ export default function ContactUs() {
   const [copied, setCopied] = useState(false);
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center pt-20">
       {copied && (
         <p className='fixed  z-10 mx-auto top-[10vh] rounded-md bg-slate-100 p-2'>
           تم نسخ الرقم إلى الحافظة

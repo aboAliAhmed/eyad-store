@@ -109,8 +109,8 @@ export default function SearchResults() {
   }
   return (
     
-    <div className='flex flex-col sm:flex-row-reverse'>
-        <form onSubmit={handleSubmit} className='bg-amber-100 flex flex-col w-5/6 sm:w-80 h-fit mx-auto mt-4 p-2 gap-5'>
+    <div className='flex flex-col sm:flex-row-reverse pt-20'>
+        <form onSubmit={handleSubmit} className='bg-fuchsia-100 flex flex-col w-5/6 sm:w-80 h-fit mx-auto mt-4 p-2 gap-5'>
           <div className='flex items-center gap-2'>
             <input 
               type="text" 
@@ -147,7 +147,7 @@ export default function SearchResults() {
           <div className='flex justify-center items-center gap-2'>
             <select 
               id="sort_order" 
-              className='border bg-orange-200 rounded-lg p-3'
+              className='border bg-fuchsia-200 rounded-lg p-3'
               onChange={handleChange}
               defaultValue={'created_at_desc'}
             >
@@ -159,16 +159,16 @@ export default function SearchResults() {
             <label className='font-semibold'>:الترتيب</label>
           </div>
           <button 
-            className='bg-orange-500 text-white p-3 rounded-lg uppercase hover:opacity-95'
+            className='bg-[#3d2646] text-white p-3 rounded-lg uppercase hover:opacity-95'
           >تم</button>
         </form>
       <div className='flex-1'>
-        <h1 className='text-3xl font-semibold mt-5 border-b p-3 text-center border-orange-200 text-orange-500 '> 
+        <h1 className='text-orange-900/90 text-3xl font-semibold mt-5 border-b p-3 text-center border-orange-200'> 
           :القائمة
         </h1>
         <div className="p-7 flex flex-wrap gap-4">
           {!loading && products.length === 0 && (
-            <p className="text-xl text-orange-500 m-auto">لا توجد متجات بهذه المواصفات</p>
+            <p className="text-red-600 text-3xl font-bold m-auto">لا توجد متجات بهذه المواصفات</p>
           )}
           {loading && (
             <p className="text-xl text-orange-500 text-center w-full">...انتظر</p>

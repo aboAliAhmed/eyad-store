@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { decreaseQuantity } from "../redux/cart/cartSlice"
+import { addToCart, decreaseQuantity } from "../redux/cart/cartSlice"
 import { Link } from "react-router-dom"
 import { FaMinus, FaPlus, FaTimes } from "react-icons/fa"
 
@@ -10,6 +10,10 @@ export default function ShoppingCart() {
 
   const handleDecreaseQuantity = (product) => {
     dispatch(decreaseQuantity(product));
+  }
+
+  const handleIncreaseQuantity = (product) => {
+    dispatch(addToCart(product));
   }
 
   return (
@@ -48,7 +52,7 @@ export default function ShoppingCart() {
                   <div className=" flex justify-between">
                     <button 
                       onClick={()=> handleDecreaseQuantity(el)}
-                      className="bg-orange-500 text-white flex justify-center items-center w-1/3 rounded-lg p-2"
+                      className="bg-[#8e61a0] text-white flex justify-center items-center w-1/3 rounded-lg p-2"
                     >
                       <FaMinus />
                     </button>
@@ -56,7 +60,8 @@ export default function ShoppingCart() {
                       className="text-orange-900"
                       >{cart.find(item => item._id === el._id).orderedQuantity}</span>
                     <button 
-                      className="bg-orange-500 text-white flex justify-center items-center w-1/3 rounded-lg p-2" 
+                      onClick={()=> handleIncreaseQuantity(el)}
+                      className="bg-[#8e61a0] text-white flex justify-center items-center w-1/3 rounded-lg p-2" 
                     >
                       <FaPlus />
                     </button>
@@ -69,7 +74,7 @@ export default function ShoppingCart() {
       {cart.length > 0 ?(
         <Link to={'/adress'}>
           <p 
-            className="bg-orange-600 text-white w-[92vw] sm:w-[600px] md:w-[20vw] md:h-fit mx-auto md:mx-0 text-center md:mt-20 py-2 rounded-lg"
+            className="bg-[#3d2646] text-white w-[92vw] sm:w-[600px] md:w-[20vw] md:h-fit mx-auto md:mx-0 text-center md:mt-20 py-2 rounded-lg"
           >
             إستكمال الطلب
           </p>
